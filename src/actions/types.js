@@ -1,3 +1,6 @@
-console.log('types.js')
+// console.log('types.js')
 export const EMAIL_CHANGED = 'email_changed';
-export const PASSWORD_CHANGE = 'password_changed';
+export const PASSWORD_CHANGED = 'password_changed';
+export const LOGIN_USER_SUCCESS = 'login_user_success';
+export const LOGIN_USER_FAIL = 'login_user_fail';
+export const LOGIN_USER = 'login_user';

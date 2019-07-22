@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import LoginForm from './components/LoginForm';
+import Router from './Router';
 
 console.disableYellowBox = true;
 
@@ -19,7 +19,9 @@ class App extends Component {
             messagingSenderId: '190690262017',
             appId: '1:190690262017:web:0005ceb6f4fa7da3'
         };
-        firebase.initializeApp(firebaseConfig);
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
     }
 
     render() {
@@ -27,7 +29,7 @@ class App extends Component {
 
         return(
             <Provider store={store}>
-                <LoginForm />
+                <Router />
             </Provider>
         );
     }

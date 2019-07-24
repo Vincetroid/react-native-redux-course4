@@ -5,12 +5,6 @@ import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
-    constructor(props) {
-        super(props)
-        state = {
-            num: 9,
-        }
-    }
 
     onEmailChange(text) {
         // console.log('onEmailChange al tipear')

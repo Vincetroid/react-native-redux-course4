@@ -1,23 +1,23 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, TouchableWithoutFeedback } from 'react-native';
 import { employeesFetch } from '../actions';
 import ListItem from './common';
+import { Actions } from 'react-native-router-flux';
 
 class EmployeeList extends Component {
     componentWillMount() {
         this.props.employeesFetch(); 
     }
 
+    onRowPress(n) {
+        console.log('n', n)
+        Actions.employeeCreate({ employee: this.props.employees });
+    }
+
     render() {
-        console.log('props en render (el bueno)')
-        console.log(this.props);
-
         const employees = this.props.employees;
-
-        console.log('employees')
-        console.log(employees)
 
         return(
             <View> 
@@ -26,9 +26,11 @@ class EmployeeList extends Component {
                         ...employees
                     ]}
                     renderItem={({ item }) =>
-                        <View style={styles.wrapTitle}>
-                            <Text style={styles.titleStyle}>{item.name}</Text>
-                        </View>
+                        <TouchableWithoutFeedback onPress={this.onRowPress.bind(this, item)}>
+                            <View style={styles.wrapTitle}>
+                                <Text style={styles.titleStyle}>{item.name}</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                     } 
                 />
             </View>

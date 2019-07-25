@@ -1,42 +1,51 @@
 import _ from 'lodash';
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { employeesFetch } from '../actions';
+import ListItem from './common';
 
 class EmployeeList extends Component {
     componentWillMount() {
-        console.log('Props')
-        console.log(this.props); 
-        console.log('Lista de Empleados')
-        console.log(this.props.employeesFetch()); 
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log('Props en componentWillReceiveProps')
-        console.log(this.props); 
-        console.log('nextProps en componentWillReceiveProps')
-        console.log(nextProps); 
+        this.props.employeesFetch(); 
     }
 
     render() {
         console.log('props en render (el bueno)')
         console.log(this.props);
 
+        const employees = this.props.employees;
+
+        console.log('employees')
+        console.log(employees)
+
         return(
-            <View>
-                <Text>Employee List</Text>
-                <Text>Employee List</Text>
-                <Text>Employee List</Text>
-                <Text>Employee List</Text>
-                <Text>Employee List</Text>
-                <Text>Employee List</Text>
-                <Text>Employee List</Text>
+            <View> 
+                <FlatList
+                    data={[
+                        ...employees
+                    ]}
+                    renderItem={({ item }) =>
+                        <View style={styles.wrapTitle}>
+                            <Text style={styles.titleStyle}>{item.name}</Text>
+                        </View>
+                    } 
+                />
             </View>
         );
     }
 }
+
+const styles = {
+    titleStyle: {
+        fontSize: 18,
+        paddingLeft: 15
+    },
+    wrapTitle: {
+        backgroundColor: 'aqua',
+        marginTop: 5
+    }
+};
 
 const mapStateToProps = (state) => {
     const employees = _.map(state.employees, (val, uid) => {

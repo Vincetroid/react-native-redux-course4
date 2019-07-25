@@ -9,7 +9,7 @@ class EmployeeCreate extends Component {
     onButtonPress() {
         const { name, phone, shift } = this.props;
 
-        this.props.employeeCreate({name, phone, shift});
+        this.props.employeeCreate({name, phone, shift: shift || 'Monday'});
     }
 
     render() {
@@ -30,7 +30,7 @@ class EmployeeCreate extends Component {
                 <CardSection>
                     <Input 
                         label="Phone"
-                        plaholcer="555-555-555"
+                        placeholder="555-555-555"
                         value={this.props.phone}
                         onChangeText={phone => this.props.employeeUpdate({ prop: 'phone', value: phone })}
                     />

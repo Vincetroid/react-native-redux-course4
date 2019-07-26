@@ -13,7 +13,7 @@ class EmployeeList extends Component {
 
     onRowPress(n) {
         console.log('n', n)
-        Actions.employeeCreate({ employee: this.props.employees });
+        Actions.employeeEdit({ employee: this.props.employees });
     }
 
     render() {

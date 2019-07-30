@@ -11,9 +11,8 @@ class EmployeeList extends Component {
         this.props.employeesFetch(); 
     }
 
-    onRowPress(n) {
-        console.log('n', n)
-        Actions.employeeEdit({ employee: this.props.employees });
+    onRowPress(employee) {
+        Actions.employeeEdit({ employee: employee });
     }
 
     render() {

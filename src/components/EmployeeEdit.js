@@ -8,7 +8,7 @@ import { Card, CardSection, Button } from './common';
 class EmployeeEdit extends Component {
 
     componentWillMount() {
-        _.each(this.props.employees, (value, prop) => {
+        _.each(this.props.employee, (value, prop) => {
             this.props.employeeUpdate({ prop, value });
         });
     }

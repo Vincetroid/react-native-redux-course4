@@ -12,6 +12,8 @@ class EmployeeList extends Component {
     }
 
     onRowPress(employee) {
+        console.log('employee')
+        console.log(employee)
         Actions.employeeEdit({ employee: employee });
     }
 
